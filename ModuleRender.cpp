@@ -42,22 +42,21 @@ bool ModuleRender::Start()
 
 update_status ModuleRender::PreUpdate()
 {
+	SDL_RenderClear(renderer);
+
 	return UPDATE_CONTINUE;
 }
 
 // Called every draw update
 update_status ModuleRender::Update()
 {
-	SDL_RenderClear(renderer);
-
-	// TODO 5: Now that we have PreUpdate/PostUpdate/Update move things around so we can render
-
-	SDL_RenderPresent(renderer);
 	return UPDATE_CONTINUE;
 }
 
 update_status ModuleRender::PostUpdate()
 {
+	SDL_RenderPresent(renderer);
+
 	return UPDATE_CONTINUE;
 }
 
