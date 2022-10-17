@@ -21,7 +21,8 @@ Application::Application()
 
 Application::~Application()
 {
-	// TODO 6: Free module memory. We should remove all App memory on close.
+	for (list<Module*>::iterator it = modules.begin(); it != modules.end(); ++it)
+		delete *it;
 }
 
 bool Application::Init()
