@@ -17,6 +17,8 @@ public:
 	bool CleanUp();
 
 private:
-	char* sceneTexturePath = "ken_stage.png";
 	SDL_Texture* sceneTexture;
+
+public:
+	int scrollPercent = 0;
 };

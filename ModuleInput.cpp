@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "ModuleInput.h"
 #include "SDL/include/SDL.h"
+#include "ModuleScene.h"
 
 ModuleInput::ModuleInput()
 {}
@@ -44,6 +45,13 @@ update_status ModuleInput::Update()
 	keyboard = SDL_GetKeyboardState(NULL);
 
 	if (keyboard[SDL_SCANCODE_ESCAPE]) return UPDATE_STOP;
+
+	if (keyboard[SDL_SCANCODE_LEFT]) {
+		if (App->scene->scrollPercent > 0) --App->scene->scrollPercent;
+	}
+	else if (keyboard[SDL_SCANCODE_RIGHT]) {
+		if (App->scene->scrollPercent < 100) ++App->scene->scrollPercent;
+	}
 
 	return UPDATE_CONTINUE;
 }

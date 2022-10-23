@@ -22,4 +22,4 @@ enum update_status
 #define FULLSCREEN_DESKTOP false
 #define VSYNC true
 #define TITLE "Super Awesome Game"
-#define SPRITE_FILE "sprites.png"
+#define SPRITE_FILE "ken_stage.png"
