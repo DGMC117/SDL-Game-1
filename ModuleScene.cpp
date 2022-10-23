@@ -34,24 +34,35 @@ update_status ModuleScene::PreUpdate()
 	SDL_Rect* renSection = new SDL_Rect;
 
 	// Background Texture 72, 208, 768, 170
-	texSection->x = 72 + (768 / 2.25) * 0.0125 * scrollPercent;
+	texSection->x = 72;
 	texSection->y = 208;
-	texSection->w = 768 / 2.25;
+	texSection->w = 768;
 	texSection->h = 170;
-	renSection->x = 0;
+	renSection->x = 0 - SCREEN_WIDTH * 0.0125 * scrollPercent;
+	renSection->y = 0;
+	renSection->w = SCREEN_WIDTH * 2.25;
+	renSection->h = SCREEN_HEIGHT * 3 / 4;
+	ret = App->renderer->Blit(sceneTexture, texSection, renSection);
+
+	// Boat Texture 8, 24, 520, 180
+	texSection->x = 8;
+	texSection->y = 24;
+	texSection->w = 520;
+	texSection->h = 180;
+	renSection->x = 0 - SCREEN_WIDTH * 0.0125 * scrollPercent;
 	renSection->y = 0;
 	renSection->w = SCREEN_WIDTH;
 	renSection->h = SCREEN_HEIGHT * 3 / 4;
 	ret = App->renderer->Blit(sceneTexture, texSection, renSection);
 
 	// Floor Texture 8, 392, 896, 72
-	texSection->x = 8 + (896 / 2.25) * 0.0125 * scrollPercent;
+	texSection->x = 8;
 	texSection->y = 392;
-	texSection->w = 896 / 2.25;
+	texSection->w = 896;
 	texSection->h = 72;
-	renSection->x = 0;
+	renSection->x = 0 - SCREEN_WIDTH * 0.0125 * scrollPercent;
 	renSection->y = SCREEN_HEIGHT - SCREEN_HEIGHT / 4;
-	renSection->w = SCREEN_WIDTH;
+	renSection->w = SCREEN_WIDTH * 2.25;
 	renSection->h = SCREEN_HEIGHT / 4;
 	ret = App->renderer->Blit(sceneTexture, texSection, renSection);
 
