@@ -1,6 +1,7 @@
 #pragma once
 #include "Module.h"
 #include "Globals.h"
+#include "ModuleRender.h"
 
 class ModuleScene : public Module
 {
@@ -14,4 +15,8 @@ public:
 	update_status Update();
 	update_status PostUpdate();
 	bool CleanUp();
+
+private:
+	char* sceneTexturePath = "ken_stage.png";
+	SDL_Texture* sceneTexture;
 };
