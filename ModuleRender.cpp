@@ -75,24 +75,13 @@ bool ModuleRender::CleanUp()
 }
 
 // Blit to screen
-bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section)
+bool ModuleRender::Blit(SDL_Texture* texture, SDL_Rect* texSection, SDL_Rect* renSection)
 {
 	bool ret = true;
-	SDL_Rect rect;
-	rect.x = x;
-	rect.y = y;
 
-	if(section != NULL)
-	{
-		rect.w = section->w;
-		rect.h = section->h;
-	}
-	else
-	{
-		SDL_QueryTexture(texture, NULL, NULL, &rect.w, &rect.h);
-	}
+	if (texSection == NULL) ret = false;
 
-	if(SDL_RenderCopy(renderer, texture, section, &rect) != 0)
+	if(ret && SDL_RenderCopy(renderer, texture, texSection, renSection) != 0)
 	{
 		LOG("Cannot blit to screen. SDL_RenderCopy error: %s", SDL_GetError());
 		ret = false;

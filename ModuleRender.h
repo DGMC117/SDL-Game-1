@@ -19,7 +19,7 @@ public:
 	update_status PostUpdate();
 	bool CleanUp();
 
-	bool Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section);
+	bool Blit(SDL_Texture* texture, SDL_Rect* texSection, SDL_Rect* renSection);
 
 public:
 	SDL_Renderer* renderer = NULL;

@@ -30,16 +30,34 @@ bool ModuleScene::Start()
 update_status ModuleScene::PreUpdate()
 {
 	bool ret = true;
-	SDL_Rect* section = new SDL_Rect;
+	SDL_Rect* texSection = new SDL_Rect;
+	SDL_Rect* renSection = new SDL_Rect;
 
-	// Floor
-	section->x = 8;
-	section->y = 392;
-	section->w = 896;
-	section->h = 72;
-	ret = App->renderer->Blit(sceneTexture, 0, 408, section);
+	// Background Texture 72, 208, 768, 170
+	texSection->x = 72 + (768 / 2.25) * 1.25;
+	texSection->y = 208;
+	texSection->w = 768 / 2.25;
+	texSection->h = 170;
+	renSection->x = 0;
+	renSection->y = 0;
+	renSection->w = SCREEN_WIDTH;
+	renSection->h = 926;
+	ret = App->renderer->Blit(sceneTexture, texSection, renSection);
 
-	delete section;
+	// Floor Texture 8, 392, 896, 72
+	texSection->x = 8;
+	texSection->y = 392;
+	texSection->w = 896;
+	texSection->h = 72;
+	renSection->x = 0;
+	renSection->y = 926;
+	renSection->w = SCREEN_WIDTH;
+	renSection->h = 154;
+	ret = App->renderer->Blit(sceneTexture, texSection, renSection);
+
+	delete texSection;
+	delete renSection;
+
 	if (!ret) return UPDATE_ERROR;
 	return UPDATE_CONTINUE;
 }
