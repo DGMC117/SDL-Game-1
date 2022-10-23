@@ -66,6 +66,31 @@ update_status ModuleScene::PreUpdate()
 	renSection->h = SCREEN_HEIGHT / 4;
 	ret = App->renderer->Blit(sceneTexture, texSection, renSection);
 
+	// String Stump 800, 184, 20, 16 (413)
+	texSection->x = 800;
+	texSection->y = 184;
+	texSection->w = 20;
+	texSection->h = 16;
+	renSection->x = 1495 - SCREEN_WIDTH * 0.0125 * scrollPercent - 20 * 2.25;
+	renSection->y = SCREEN_HEIGHT - SCREEN_HEIGHT / 4 - 20 * 2.25;
+	renSection->w = 30 * 2.25;
+	renSection->h = 24 * 2.25;
+	ret = App->renderer->Blit(sceneTexture, texSection, renSection);
+
+	// Stump Textures 760, 176, 30, 24
+	texSection->x = 760;
+	texSection->y = 176;
+	texSection->w = 30;
+	texSection->h = 24;
+	renSection->y = SCREEN_HEIGHT - SCREEN_HEIGHT / 4 - 20 * 2.25;
+	renSection->w = 30 * 2.25;
+	renSection->h = 24 * 2.25;
+	for (int i = -1; i < 3; ++i) {
+		renSection->x = 1495 - SCREEN_WIDTH * 0.0125 * scrollPercent - 20 * 2.25 + (double) i * SCREEN_WIDTH * 2.25 / 4;
+		if (i != 0) ret = App->renderer->Blit(sceneTexture, texSection, renSection);
+	}
+
+
 	delete texSection;
 	delete renSection;
 
